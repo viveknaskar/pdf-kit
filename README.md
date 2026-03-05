@@ -1,8 +1,40 @@
 # pdfkit
 
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/viveknaskar?label=Sponsor&logo=GitHub)](https://github.com/sponsors/viveknaskar)
+
 Free, open-source PDF tools that run entirely in your browser. No watermarks, no sign-up, no server uploads — your files never leave your device.
 
 Built with vanilla JavaScript, [pdf-lib](https://pdf-lib.js.org/), [PDF.js](https://mozilla.github.io/pdf.js/), and [Vite](https://vitejs.dev/).
+
+---
+
+## Screenshots
+
+### Home
+
+![Home](public/screenshots/home.png)
+
+### Essentials
+
+| Merge PDFs | Split PDF | Compress PDF |
+|:---:|:---:|:---:|
+| ![Merge](public/screenshots/merge.png) | ![Split](public/screenshots/split.png) | ![Compress](public/screenshots/compress.png) |
+
+### Convert
+
+| PDF to JPG | Images to PDF | HTML to PDF |
+|:---:|:---:|:---:|
+| ![PDF to JPG](public/screenshots/pdf2jpg.png) | ![Images to PDF](public/screenshots/img2pdf.png) | ![HTML to PDF](public/screenshots/html2pdf.png) |
+
+### Edit & Organize
+
+| Organize Pages | Add Text / Sign | Page Numbers |
+|:---:|:---:|:---:|
+| ![Organize](public/screenshots/organize.png) | ![Add Text](public/screenshots/addtext.png) | ![Page Numbers](public/screenshots/pagenums.png) |
+
+| Add Watermark | Encrypt PDF | Extract Text |
+|:---:|:---:|:---:|
+| ![Watermark](public/screenshots/watermark.png) | ![Encrypt](public/screenshots/encrypt.png) | ![Extract](public/screenshots/extract.png) |
 
 ---
 
@@ -90,19 +122,6 @@ Output goes to `dist/`. This is a fully static folder — deploy it anywhere.
 # Preview the production build locally
 npm run preview
 ```
-
----
-
-## Deployment
-
-The `dist/` output is a static site with no server requirements.
-
-| Platform | How to deploy |
-|----------|---------------|
-| **Vercel** | `npx vercel` in the project root |
-| **Netlify** | Connect the repo — build command: `npm run build`, publish dir: `dist` |
-| **GitHub Pages** | Build and push `dist/` to the `gh-pages` branch |
-| **Any static host** | Upload the contents of `dist/` |
 
 ---
 
