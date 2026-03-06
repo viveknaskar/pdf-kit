@@ -2,8 +2,8 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: '.',
-  publicDir: 'public',
   base: '/pdf-kit/',
+  publicDir: 'public',
   build: {
     outDir: 'dist',
     emptyOutDir: true,
