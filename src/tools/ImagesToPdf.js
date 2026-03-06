@@ -1,5 +1,5 @@
 import { PDFDocument } from 'pdf-lib';
-import { formatSize, downloadBlob, setProgress, hideProgress } from '../core/Utils.js';
+import { formatSize, downloadBlob, setProgress, hideProgress, showError } from '../core/Utils.js';
 
 let img2pdfFiles = [];
 
@@ -50,7 +50,7 @@ async function doConvert() {
     document.getElementById('img2pdfDownload').onclick = () => downloadBlob(blob, 'images.pdf');
     document.getElementById('img2pdfResult').classList.add('active');
   } catch (err) {
-    alert('Error creating PDF: ' + err.message);
+    showError('Error creating PDF: ' + err.message);
     hideProgress('img2pdfProgress');
   }
 }

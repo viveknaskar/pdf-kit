@@ -1,5 +1,5 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
-import { downloadBlob, setProgress, hideProgress } from '../core/Utils.js';
+import { formatSize, downloadBlob, setProgress, hideProgress, showError } from '../core/Utils.js';
 
 let pagenumsFile = null;
 
@@ -37,10 +37,11 @@ async function doPageNums() {
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     setProgress('pagenumsProgress', 100);
     setTimeout(() => hideProgress('pagenumsProgress'), 500);
+    document.getElementById('pagenumsResultInfo').textContent = `${pages.length} pages numbered — ${formatSize(pdfBytes.length)}`;
     document.getElementById('pagenumsDownload').onclick = () => downloadBlob(blob, 'numbered_' + pagenumsFile.name);
     document.getElementById('pagenumsResult').classList.add('active');
   } catch (err) {
-    alert('Error: ' + err.message);
+    showError('Error: ' + err.message);
     hideProgress('pagenumsProgress');
   }
 }

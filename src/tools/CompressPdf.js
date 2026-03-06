@@ -1,5 +1,5 @@
 import { PDFDocument } from 'pdf-lib';
-import { formatSize, downloadBlob, setProgress, hideProgress } from '../core/Utils.js';
+import { formatSize, downloadBlob, setProgress, hideProgress, showError } from '../core/Utils.js';
 
 let compressFile = null;
 
@@ -21,7 +21,7 @@ async function doCompress() {
     document.getElementById('compressDownload').onclick = () => downloadBlob(blob, 'compressed_' + compressFile.name);
     document.getElementById('compressResult').classList.add('active');
   } catch (err) {
-    alert('Error compressing: ' + err.message);
+    showError('Error compressing: ' + err.message);
     hideProgress('compressProgress');
   }
 }

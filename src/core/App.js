@@ -288,6 +288,7 @@ function toolViewsHTML() {
       <div class="action-bar">
         <button class="btn-primary" id="html2pdfBtn">Convert to PDF</button>
       </div>
+      <div class="progress-bar" id="html2pdfProgress"><div class="progress-bar-fill"></div></div>
       <div class="result-area" id="html2pdfResult">
         <h4>PDF created from HTML</h4>
         <div class="result-info" id="html2pdfResultInfo"></div>
@@ -408,6 +409,7 @@ function toolViewsHTML() {
       <div class="progress-bar" id="pagenumsProgress"><div class="progress-bar-fill"></div></div>
       <div class="result-area" id="pagenumsResult">
         <h4>Page numbers added</h4>
+        <div class="result-info" id="pagenumsResultInfo"></div>
         <button class="btn-primary" id="pagenumsDownload">Download PDF</button>
       </div>
     </div>
@@ -445,6 +447,7 @@ function toolViewsHTML() {
       <div class="progress-bar" id="watermarkProgress"><div class="progress-bar-fill"></div></div>
       <div class="result-area" id="watermarkResult">
         <h4>Watermark added</h4>
+        <div class="result-info" id="watermarkResultInfo"></div>
         <button class="btn-primary" id="watermarkDownload">Download PDF</button>
       </div>
     </div>
@@ -465,7 +468,11 @@ function toolViewsHTML() {
       <div class="options-row" id="encryptOptions" style="display:none">
         <div class="option-group">
           <label>Password</label>
-          <input type="text" id="encryptPassword" placeholder="Enter password" style="width:220px">
+          <input type="password" id="encryptPassword" placeholder="Enter password" style="width:220px">
+        </div>
+        <div class="option-group">
+          <label>Confirm Password</label>
+          <input type="password" id="encryptPasswordConfirm" placeholder="Confirm password" style="width:220px">
         </div>
       </div>
       <div class="action-bar" id="encryptActions" style="display:none">

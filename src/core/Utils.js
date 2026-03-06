@@ -40,6 +40,32 @@ export function hideProgress(id) {
 }
 
 /**
+ * Show a toast error message.
+ */
+export function showError(msg) {
+  showToast(msg, 'error');
+}
+
+/**
+ * Show a toast success message.
+ */
+export function showSuccess(msg) {
+  showToast(msg, 'success');
+}
+
+function showToast(msg, type) {
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+}
+
+/**
  * Convert hex color (#rrggbb) to {r, g, b} (0-255).
  */
 export function hexToRgb(hex) {

@@ -1,12 +1,14 @@
 import { PDFDocument } from 'pdf-lib';
-import { downloadBlob } from '../core/Utils.js';
+import { downloadBlob, showError } from '../core/Utils.js';
 
 let encryptFile = null;
 
 async function doEncrypt() {
   if (!encryptFile) return;
   const password = document.getElementById('encryptPassword').value;
-  if (!password) { alert('Enter a password.'); return; }
+  const confirm = document.getElementById('encryptPasswordConfirm').value;
+  if (!password) { showError('Enter a password.'); return; }
+  if (password !== confirm) { showError('Passwords do not match.'); return; }
   try {
     const bytes = await encryptFile.arrayBuffer();
     const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: true });
@@ -15,7 +17,7 @@ async function doEncrypt() {
     document.getElementById('encryptDownload').onclick = () => downloadBlob(blob, 'encrypted_' + encryptFile.name);
     document.getElementById('encryptResult').classList.add('active');
   } catch (err) {
-    alert('Error encrypting: ' + err.message);
+    showError('Error encrypting: ' + err.message);
   }
 }
 

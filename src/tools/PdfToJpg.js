@@ -1,5 +1,5 @@
 import * as pdfjsLib from 'pdfjs-dist';
-import { setProgress, hideProgress } from '../core/Utils.js';
+import { setProgress, hideProgress, showError } from '../core/Utils.js';
 
 let pdf2jpgFile = null;
 
@@ -42,7 +42,7 @@ async function doConvert() {
     setTimeout(() => hideProgress('pdf2jpgProgress'), 500);
     document.getElementById('pdf2jpgResult').classList.add('active');
   } catch (err) {
-    alert('Error converting: ' + err.message);
+    showError('Error converting: ' + err.message);
     hideProgress('pdf2jpgProgress');
   }
 }

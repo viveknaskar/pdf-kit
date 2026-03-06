@@ -1,5 +1,5 @@
 import { PDFDocument } from 'pdf-lib';
-import { formatSize, downloadBlob, setProgress, hideProgress } from '../core/Utils.js';
+import { formatSize, downloadBlob, setProgress, hideProgress, showError } from '../core/Utils.js';
 
 let mergeFiles = [];
 
@@ -63,7 +63,7 @@ async function doMerge() {
     document.getElementById('mergeDownload').onclick = () => downloadBlob(blob, 'merged.pdf');
     document.getElementById('mergeResult').classList.add('active');
   } catch (err) {
-    alert('Error merging: ' + err.message);
+    showError('Error merging: ' + err.message);
     hideProgress('mergeProgress');
   }
 }

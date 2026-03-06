@@ -1,5 +1,5 @@
 import { PDFDocument, rgb, degrees, StandardFonts } from 'pdf-lib';
-import { downloadBlob, setProgress, hideProgress } from '../core/Utils.js';
+import { formatSize, downloadBlob, setProgress, hideProgress, showError } from '../core/Utils.js';
 
 let watermarkFile = null;
 
@@ -32,10 +32,11 @@ async function doWatermark() {
     const blob = new Blob([pdfBytes], { type: 'application/pdf' });
     setProgress('watermarkProgress', 100);
     setTimeout(() => hideProgress('watermarkProgress'), 500);
+    document.getElementById('watermarkResultInfo').textContent = `"${text}" added to ${pages.length} pages — ${formatSize(pdfBytes.length)}`;
     document.getElementById('watermarkDownload').onclick = () => downloadBlob(blob, 'watermarked_' + watermarkFile.name);
     document.getElementById('watermarkResult').classList.add('active');
   } catch (err) {
-    alert('Error: ' + err.message);
+    showError('Error: ' + err.message);
     hideProgress('watermarkProgress');
   }
 }

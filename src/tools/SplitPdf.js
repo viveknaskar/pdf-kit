@@ -1,6 +1,6 @@
 import { PDFDocument } from 'pdf-lib';
 import * as pdfjsLib from 'pdfjs-dist';
-import { formatSize, downloadBlob, setProgress, hideProgress } from '../core/Utils.js';
+import { formatSize, downloadBlob, setProgress, hideProgress, showError } from '../core/Utils.js';
 
 let splitPdfBytes = null;
 let selectedPages = new Set();
@@ -43,6 +43,7 @@ async function handleFile(file) {
 
   document.getElementById('splitOptions').style.display = 'flex';
   document.getElementById('splitActions').style.display = 'flex';
+  document.getElementById('splitResult').classList.remove('active');
 }
 
 async function doSplit() {
@@ -73,7 +74,7 @@ async function doSplit() {
       }
       document.getElementById('splitResultInfo').textContent = `Split into ${total} individual pages`;
     } else {
-      if (selectedPages.size === 0) { alert('Select at least one page.'); hideProgress('splitProgress'); return; }
+      if (selectedPages.size === 0) { showError('Select at least one page.'); hideProgress('splitProgress'); return; }
       const newDoc = await PDFDocument.create();
       const sorted = Array.from(selectedPages).sort((a, b) => a - b);
       const pages = await newDoc.copyPages(srcDoc, sorted.map(p => p - 1));
@@ -94,7 +95,7 @@ async function doSplit() {
     setTimeout(() => hideProgress('splitProgress'), 500);
     document.getElementById('splitResult').classList.add('active');
   } catch (err) {
-    alert('Error splitting: ' + err.message);
+    showError('Error splitting: ' + err.message);
     hideProgress('splitProgress');
   }
 }

@@ -1,6 +1,6 @@
 import { PDFDocument, degrees } from 'pdf-lib';
 import * as pdfjsLib from 'pdfjs-dist';
-import { formatSize, downloadBlob, setProgress, hideProgress } from '../core/Utils.js';
+import { formatSize, downloadBlob, setProgress, hideProgress, showError } from '../core/Utils.js';
 
 let organizePdfBytes = null;
 let organizePages = [];
@@ -28,17 +28,49 @@ async function handleFile(file) {
     const div = document.createElement('div');
     div.className = 'page-preview';
     div.dataset.idx = i;
+    div.draggable = true;
     div.innerHTML = `<div class="page-check">✓</div><span class="page-num">${i + 1}</span>`;
     div.insertBefore(canvas, div.firstChild);
     div.addEventListener('click', () => {
       if (organizeSelected.has(i)) { organizeSelected.delete(i); div.classList.remove('selected'); }
       else { organizeSelected.add(i); div.classList.add('selected'); }
     });
+    div.addEventListener('dragstart', e => {
+      e.dataTransfer.setData('text/plain', div.dataset.idx);
+      div.classList.add('dragging');
+    });
+    div.addEventListener('dragend', () => div.classList.remove('dragging'));
+    div.addEventListener('dragover', e => { e.preventDefault(); div.classList.add('drag-over'); });
+    div.addEventListener('dragleave', () => div.classList.remove('drag-over'));
+    div.addEventListener('drop', e => {
+      e.preventDefault();
+      div.classList.remove('drag-over');
+      const fromIdx = parseInt(e.dataTransfer.getData('text/plain'));
+      const toIdx = parseInt(div.dataset.idx);
+      if (fromIdx === toIdx) return;
+      const fromPos = organizePages.findIndex(p => p.index === fromIdx);
+      const toPos = organizePages.findIndex(p => p.index === toIdx);
+      const [moved] = organizePages.splice(fromPos, 1);
+      organizePages.splice(toPos, 0, moved);
+      reRenderPreviews();
+    });
     container.appendChild(div);
   }
 
   document.getElementById('organizeToolbar').style.display = 'flex';
   document.getElementById('organizeActions').style.display = 'flex';
+}
+
+function reRenderPreviews() {
+  const container = document.getElementById('organizePreviews');
+  const divs = Array.from(container.querySelectorAll('.page-preview'));
+  const divMap = {};
+  divs.forEach(d => { divMap[d.dataset.idx] = d; });
+  organizePages.forEach((p, pos) => {
+    const d = divMap[p.index];
+    d.querySelector('.page-num').textContent = pos + 1;
+    container.appendChild(d);
+  });
 }
 
 function rotateSelected(deg) {
@@ -54,7 +86,7 @@ function rotateSelected(deg) {
 }
 
 function deleteSelected() {
-  if (organizeSelected.size === organizePages.length) { alert("Can't delete all pages."); return; }
+  if (organizeSelected.size === organizePages.length) { showError("Can't delete all pages."); return; }
   organizePages = organizePages.filter(p => !organizeSelected.has(p.index));
   organizeSelected.clear();
   document.querySelectorAll('#organizePreviews .page-preview').forEach(div => {
@@ -85,7 +117,7 @@ async function doOrganize() {
     document.getElementById('organizeDownload').onclick = () => downloadBlob(blob, 'organized.pdf');
     document.getElementById('organizeResult').classList.add('active');
   } catch (err) {
-    alert('Error: ' + err.message);
+    showError('Error: ' + err.message);
     hideProgress('organizeProgress');
   }
 }

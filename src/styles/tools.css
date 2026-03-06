@@ -19,6 +19,8 @@
 
 .page-preview:hover { border-color: var(--border-hover); }
 .page-preview.selected { border-color: var(--accent); }
+.page-preview.dragging { opacity: 0.4; }
+.page-preview.drag-over { border-color: var(--blue); box-shadow: 0 0 0 2px var(--blue); }
 
 .page-preview canvas {
   width: 100%;

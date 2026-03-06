@@ -1,5 +1,5 @@
 import * as pdfjsLib from 'pdfjs-dist';
-import { setProgress, hideProgress } from '../core/Utils.js';
+import { setProgress, hideProgress, showError, showSuccess } from '../core/Utils.js';
 
 async function handleFile(file) {
   if (!file) return;
@@ -22,7 +22,7 @@ async function handleFile(file) {
     document.getElementById('extractedText').value = allText;
     document.getElementById('extractResult').classList.add('active');
   } catch (err) {
-    alert('Error extracting: ' + err.message);
+    showError('Error extracting: ' + err.message);
     hideProgress('extractProgress');
   }
 }
@@ -31,9 +31,15 @@ export function init() {
   document.getElementById('extractFileInput').addEventListener('change', function () {
     handleFile(this.files[0]);
   });
-  document.getElementById('extractCopyBtn').addEventListener('click', () => {
+  document.getElementById('extractCopyBtn').addEventListener('click', async () => {
     const textarea = document.getElementById('extractedText');
-    textarea.select();
-    navigator.clipboard.writeText(textarea.value);
+    try {
+      await navigator.clipboard.writeText(textarea.value);
+      showSuccess('Text copied to clipboard');
+    } catch {
+      textarea.select();
+      document.execCommand('copy');
+      showSuccess('Text copied to clipboard');
+    }
   });
 }

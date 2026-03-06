@@ -1,6 +1,6 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import * as pdfjsLib from 'pdfjs-dist';
-import { downloadBlob, setProgress, hideProgress, hexToRgb } from '../core/Utils.js';
+import { downloadBlob, setProgress, hideProgress, hexToRgb, showError } from '../core/Utils.js';
 
 let addtextPdfBytes = null;
 let addtextAnnotations = {};
@@ -166,7 +166,7 @@ async function doSave() {
     document.getElementById('addtextDownload').onclick = () => downloadBlob(blob, 'annotated.pdf');
     document.getElementById('addtextResult').classList.add('active');
   } catch (err) {
-    alert('Error saving: ' + err.message);
+    showError('Error saving: ' + err.message);
     hideProgress('addtextProgress');
   }
 }
