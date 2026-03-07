@@ -218,4 +218,4 @@ pdf-kit/
 
 ## License
 
-MIT
+[MIT](LICENSE)
