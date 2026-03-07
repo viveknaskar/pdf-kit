@@ -5,6 +5,8 @@
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/viveknaskar?label=Sponsor&logo=GitHub)](https://github.com/sponsors/viveknaskar)
 ![Views](https://komarev.com/ghpvc/?username=viveknaskar&repo=pdf-kit&color=orange&label=Views&style=flat)
 
+Live site: https://viveknaskar.github.io/pdf-kit/
+
 Free, open-source PDF tools that run entirely in your browser. No watermarks, no sign-up, no server uploads — your files never leave your device.
 
 Built with vanilla JavaScript, [pdf-lib](https://pdf-lib.js.org/), [PDF.js](https://mozilla.github.io/pdf.js/), and [Vite](https://vitejs.dev/).

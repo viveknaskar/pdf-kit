@@ -10,7 +10,8 @@
     "deploy": "npm run build && npx gh-pages -d dist",
     "test": "vitest run --config vitest.config.js",
     "test:watch": "vitest --config vitest.config.js",
-    "test:e2e": "vitest run --config vitest.e2e.config.js"
+    "test:e2e": "vitest run --config vitest.e2e.config.js",
+    "screenshots": "node scripts/screenshots.mjs"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",

@@ -180,3 +180,23 @@ footer {
   .tool-grid { grid-template-columns: 1fr; }
   header nav { display: none; }
 }
+
+.info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  max-width: 720px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.info-card strong { color: var(--text); }
+
+.info-card a:not(.btn-sponsor) {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.info-card a:hover { text-decoration: underline; }
