@@ -7,7 +7,7 @@
 
 Live site: https://viveknaskar.github.io/pdf-kit/
 
-Free, open-source PDF tools that run entirely in your browser. No watermarks, no sign-up, no server uploads — your files never leave your device.
+Free, open-source PDF tools that run entirely in your browser. No watermarks, no sign-up, no server uploads, your files never leave your device.
 
 Built with vanilla JavaScript, [pdf-lib](https://pdf-lib.js.org/), [PDF.js](https://mozilla.github.io/pdf.js/), and [Vite](https://vitejs.dev/).
 
