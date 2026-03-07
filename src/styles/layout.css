@@ -200,3 +200,25 @@ footer {
 }
 
 .info-card a:hover { text-decoration: underline; }
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 0;
+  padding: 16px 40px;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.stats-bar span { padding: 0 16px; }
+
+.stats-divider {
+  color: var(--border-hover);
+  padding: 0 !important;
+}

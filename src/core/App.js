@@ -15,9 +15,8 @@ export function renderApp() {
         <button class="active" data-section="essentials">Essentials</button>
         <button data-section="edit">Edit & Organize</button>
         <button data-section="convert">Convert</button>
-        <button data-section="about">About</button>
         <button data-section="howitworks">How does it Work?</button>
-        <button data-section="support">Support</button>
+        <button data-section="support">Sponsor</button>
       </nav>
     </header>
 
@@ -116,34 +115,23 @@ export function renderApp() {
           </div>
         </div>
       
-        <!-- ABOUT -->
-        <div class="tool-section" id="section-about">
-          <div class="section-label">About</div>
-          <div class="info-card">
-            <p>pdfkit is a free, open-source collection of PDF tools that runs entirely in your browser. There is no backend, no account required, and no file size limits. Everything is processed locally on your device using WebAssembly and the Canvas API.</p>
-            <p style="margin-top:12px">Built with vanilla JavaScript, <a href="https://pdf-lib.js.org/" target="_blank" rel="noopener">pdf-lib</a>, <a href="https://mozilla.github.io/pdf.js/" target="_blank" rel="noopener">PDF.js</a>, and <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a>. No frontend framework.</p>
-          </div>
-        </div>
+
 
         <!-- HOW DOES IT WORK -->
         <div class="tool-section" id="section-howitworks">
           <div class="section-label">How does it Work?</div>
           <div class="info-card">
-            <p>When you upload a file, it never leaves your device. Here is exactly what happens:</p>
-            <ol style="margin-top:14px;padding-left:20px;display:flex;flex-direction:column;gap:10px">
-              <li><strong>The browser reads the file into memory</strong> using the FileReader / ArrayBuffer API. The file data lives in your browser's RAM, not on any server.</li>
-              <li><strong>pdf-lib and PDF.js process it locally</strong> inside your browser tab using JavaScript and WebAssembly.</li>
-              <li><strong>The result is generated in memory</strong> as a new Blob object, still entirely in RAM.</li>
-              <li><strong>You download it</strong> via a temporary local URL that the browser creates, triggers the download, then immediately revokes.</li>
-              <li><strong>When you close the tab</strong>, everything is gone. No trace left anywhere.</li>
-            </ol>
-            <p style="margin-top:14px;color:var(--text-muted)">No data is ever sent over the network. You can turn off your WiFi after the page loads and every tool will still work.</p>
+            <p style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:14px">Your files never leave your device. Ever.</p>
+            <p>Most online PDF tools work by sending your file to a server, processing it there, and sending it back. That means your documents pass through someone else's computer — which is a problem if they contain anything sensitive.</p>
+            <p style="margin-top:12px">pdfkit works differently. When you drop a file in, your browser reads it directly into memory on your machine. All the processing happens right there in your browser tab. When it is done, your file is ready to download, and nothing was ever sent anywhere.</p>
+            <p style="margin-top:12px">Close the tab and it is all gone. No copies stored. No servers involved. You can even go offline after the page loads and everything still works.</p>
+            <p style="margin-top:16px;font-size:15px;font-weight:600;color:var(--text)">Your files are yours. We never see them.</p>
           </div>
         </div>
 
         <!-- SUPPORT -->
         <div class="tool-section" id="section-support">
-          <div class="section-label">Support</div>
+          <div class="section-label">Sponsor</div>
           <div class="info-card">
             <p>pdfkit is free and open-source. If it has been useful to you, consider supporting its development via GitHub Sponsors.</p>
             <a href="https://github.com/sponsors/viveknaskar" target="_blank" rel="noopener" class="btn-sponsor">
