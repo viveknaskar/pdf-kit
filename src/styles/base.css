@@ -18,6 +18,7 @@
   --pink: #f472b6;
   --radius: 12px;
   --radius-sm: 8px;
+  --transition: 0.2s ease;
   --font-body: 'DM Sans', sans-serif;
   --font-display: 'Instrument Serif', serif;
 }
