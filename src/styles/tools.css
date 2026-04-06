@@ -121,3 +121,27 @@
   width: 80px;
   accent-color: var(--accent);
 }
+
+/* ===== PDF INSPECTOR ===== */
+#inspectorTableBody tr {
+  border-bottom: 1px solid var(--border);
+}
+
+#inspectorTableBody tr:last-child {
+  border-bottom: none;
+}
+
+.inspector-key {
+  color: var(--text-muted);
+  padding: 9px 12px;
+  white-space: nowrap;
+  font-weight: 500;
+  width: 40%;
+}
+
+.inspector-val {
+  padding: 9px 12px;
+  word-break: break-all;
+  color: var(--text);
+}
+

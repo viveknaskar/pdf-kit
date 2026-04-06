@@ -53,6 +53,16 @@ export function renderApp() {
               <h3>Compress PDF</h3>
               <p>Reduce file size while keeping quality.</p>
             </div>
+            <div class="tool-card" data-tool="inspector" style="--card-accent: var(--blue); --icon-bg: rgba(96,165,250,0.12)">
+              <div class="tool-icon">🔍</div>
+              <h3>PDF Inspector</h3>
+              <p>View metadata, page count, file size, and PDF properties.</p>
+            </div>
+            <div class="tool-card" data-tool="extract" style="--card-accent: var(--pink); --icon-bg: rgba(244,114,182,0.12)">
+              <div class="tool-icon">📝</div>
+              <h3>Extract Text</h3>
+              <p>Copy all text content from a PDF.</p>
+            </div>
           </div>
         </div>
 
@@ -64,6 +74,11 @@ export function renderApp() {
               <div class="tool-icon">🖼️</div>
               <h3>PDF to JPG</h3>
               <p>Convert PDF pages to high-quality images.</p>
+            </div>
+            <div class="tool-card" data-tool="pdf2png" style="--card-accent: var(--blue); --icon-bg: rgba(96,165,250,0.12)">
+              <div class="tool-icon">🏞️</div>
+              <h3>PDF to PNG</h3>
+              <p>Convert PDF pages to lossless PNG images.</p>
             </div>
             <div class="tool-card" data-tool="img2pdf" style="--card-accent: var(--purple); --icon-bg: rgba(167,139,250,0.12)">
               <div class="tool-icon">📷</div>
@@ -107,10 +122,20 @@ export function renderApp() {
               <h3>Encrypt PDF</h3>
               <p>Password-protect your PDF files.</p>
             </div>
-            <div class="tool-card" data-tool="extract" style="--card-accent: var(--pink); --icon-bg: rgba(244,114,182,0.12)">
-              <div class="tool-icon">📝</div>
-              <h3>Extract Text</h3>
-              <p>Copy all text content from a PDF.</p>
+            <div class="tool-card" data-tool="decrypt" style="--card-accent: var(--green); --icon-bg: rgba(74,222,128,0.12)">
+              <div class="tool-icon">🔓</div>
+              <h3>Decrypt PDF</h3>
+              <p>Remove password protection from a PDF.</p>
+            </div>
+            <div class="tool-card" data-tool="rotate" style="--card-accent: var(--accent); --icon-bg: rgba(255,107,74,0.12)">
+              <div class="tool-icon">🔄</div>
+              <h3>Rotate Pages</h3>
+              <p>Rotate individual or all pages by 90° or 180°.</p>
+            </div>
+            <div class="tool-card" data-tool="deletepages" style="--card-accent: var(--pink); --icon-bg: rgba(244,114,182,0.12)">
+              <div class="tool-icon">🗑️</div>
+              <h3>Delete Pages</h3>
+              <p>Remove unwanted pages from a PDF.</p>
             </div>
           </div>
         </div>
@@ -536,6 +561,148 @@ function toolViewsHTML() {
         <h4>Text extracted</h4>
         <textarea id="extractedText" style="width:100%;min-height:300px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:var(--font-body);font-size:14px;padding:16px;border-radius:var(--radius-sm);resize:vertical;margin-bottom:12px;" readonly></textarea>
         <button class="btn-primary" id="extractCopyBtn">Copy to clipboard</button>
+      </div>
+    </div>
+
+    <!-- ROTATE PAGES -->
+    <div class="tool-view" id="tool-rotate">
+      <div class="tool-view-header">
+        <button class="back-btn" data-back>← Back to tools</button>
+        <h2>Rotate Pages</h2>
+        <p>Select pages and rotate them 90°, -90°, or 180°.</p>
+      </div>
+      <div class="drop-zone" id="rotateDropZone">
+        <input type="file" accept=".pdf" id="rotateFileInput">
+        <div class="drop-zone-icon">🔄</div>
+        <h3>Drop a PDF file here</h3>
+        <p>or click to browse</p>
+      </div>
+      <div class="page-previews" id="rotatePreviews"></div>
+      <div class="editor-toolbar" id="rotateToolbar" style="display:none">
+        <button id="rotateCW">↻ 90° Clockwise</button>
+        <button id="rotateCCW">↺ 90° Counter-clockwise</button>
+        <button id="rotate180">↕ 180°</button>
+        <button id="rotateSelectAll">Select all</button>
+        <button id="rotateDeselectAll">Deselect all</button>
+      </div>
+      <div class="action-bar" id="rotateActions" style="display:none"></div>
+      <div class="progress-bar" id="rotateProgress"><div class="progress-bar-fill"></div></div>
+      <div class="result-area" id="rotateResult">
+        <h4>Pages rotated</h4>
+        <div class="result-info" id="rotateResultInfo"></div>
+        <button class="btn-primary" id="rotateDownload">Download PDF</button>
+      </div>
+    </div>
+
+    <!-- DELETE PAGES -->
+    <div class="tool-view" id="tool-deletepages">
+      <div class="tool-view-header">
+        <button class="back-btn" data-back>← Back to tools</button>
+        <h2>Delete Pages</h2>
+        <p>Click pages to mark them for deletion, then apply.</p>
+      </div>
+      <div class="drop-zone" id="deleteDropZone">
+        <input type="file" accept=".pdf" id="deleteFileInput">
+        <div class="drop-zone-icon">🗑️</div>
+        <h3>Drop a PDF file here</h3>
+        <p>or click to browse</p>
+      </div>
+      <div class="page-previews" id="deletePreviews"></div>
+      <div class="action-bar" id="deleteActions" style="display:none">
+        <button class="btn-primary" id="deleteBtn">Delete selected pages</button>
+        <button class="btn-secondary" id="deleteSelectAll">Select all</button>
+        <button class="btn-secondary" id="deleteDeselectAll">Deselect all</button>
+      </div>
+      <div class="progress-bar" id="deleteProgress"><div class="progress-bar-fill"></div></div>
+      <div class="result-area" id="deleteResult">
+        <h4>Pages deleted</h4>
+        <div class="result-info" id="deleteResultInfo"></div>
+        <button class="btn-primary" id="deleteDownload">Download PDF</button>
+      </div>
+    </div>
+
+    <!-- PDF INSPECTOR -->
+    <div class="tool-view" id="tool-inspector">
+      <div class="tool-view-header">
+        <button class="back-btn" data-back>← Back to tools</button>
+        <h2>PDF Inspector</h2>
+        <p>View metadata, page info, and file properties — nothing is uploaded.</p>
+      </div>
+      <div class="drop-zone" id="inspectorDropZone">
+        <input type="file" accept=".pdf" id="inspectorFileInput">
+        <div class="drop-zone-icon">🔍</div>
+        <h3>Drop a PDF file here</h3>
+        <p>or click to browse</p>
+      </div>
+      <div class="progress-bar" id="inspectorProgress"><div class="progress-bar-fill"></div></div>
+      <div class="result-area" id="inspectorResult">
+        <h4>PDF properties</h4>
+        <table style="width:100%;border-collapse:collapse;margin-top:8px">
+          <tbody id="inspectorTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DECRYPT PDF -->
+    <div class="tool-view" id="tool-decrypt">
+      <div class="tool-view-header">
+        <button class="back-btn" data-back>← Back to tools</button>
+        <h2>Decrypt PDF</h2>
+        <p>Remove password protection from an encrypted PDF.</p>
+      </div>
+      <div class="drop-zone" id="decryptDropZone">
+        <input type="file" accept=".pdf" id="decryptFileInput">
+        <div class="drop-zone-icon">🔓</div>
+        <h3>Drop an encrypted PDF here</h3>
+        <p>or click to browse</p>
+      </div>
+      <div class="options-row" id="decryptOptions" style="display:none">
+        <div class="option-group">
+          <label>Password (if required)</label>
+          <input type="password" id="decryptPassword" placeholder="Enter PDF password" style="width:240px">
+        </div>
+      </div>
+      <div class="action-bar" id="decryptActions" style="display:none">
+        <button class="btn-primary" id="decryptBtn">Decrypt PDF</button>
+      </div>
+      <div class="result-area" id="decryptResult">
+        <h4>PDF decrypted</h4>
+        <div class="result-info" id="decryptResultInfo"></div>
+        <button class="btn-primary" id="decryptDownload">Download decrypted PDF</button>
+      </div>
+    </div>
+
+    <!-- PDF TO PNG -->
+    <div class="tool-view" id="tool-pdf2png">
+      <div class="tool-view-header">
+        <button class="back-btn" data-back>← Back to tools</button>
+        <h2>PDF to PNG</h2>
+        <p>Convert each page of a PDF into a lossless PNG image.</p>
+      </div>
+      <div class="drop-zone" id="pdf2pngDropZone">
+        <input type="file" accept=".pdf" id="pdf2pngFileInput">
+        <div class="drop-zone-icon">🏞️</div>
+        <h3>Drop a PDF file here</h3>
+        <p>or click to browse</p>
+      </div>
+      <div class="options-row" id="pdf2pngOptions" style="display:none">
+        <div class="option-group">
+          <label>Resolution</label>
+          <select id="pdf2pngQuality">
+            <option value="1">Standard (72 DPI)</option>
+            <option value="2" selected>High (150 DPI)</option>
+            <option value="3">Maximum (216 DPI)</option>
+          </select>
+        </div>
+      </div>
+      <div class="action-bar" id="pdf2pngActions" style="display:none">
+        <button class="btn-primary" id="pdf2pngBtn">Convert to PNG</button>
+      </div>
+      <div class="progress-bar" id="pdf2pngProgress"><div class="progress-bar-fill"></div></div>
+      <div class="result-area" id="pdf2pngResult">
+        <h4>Conversion complete</h4>
+        <div class="result-info" id="pdf2pngResultInfo"></div>
+        <div id="pdf2pngDownloads"></div>
       </div>
     </div>
   `;

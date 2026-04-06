@@ -28,6 +28,11 @@ import { init as initPageNums } from './tools/PageNumbers.js';
 import { init as initWatermark } from './tools/AddWatermark.js';
 import { init as initEncrypt } from './tools/EncryptPdf.js';
 import { init as initExtract } from './tools/ExtractText.js';
+import { init as initRotate } from './tools/RotatePages.js';
+import { init as initDeletePages } from './tools/DeletePages.js';
+import { init as initInspector } from './tools/PdfInspector.js';
+import { init as initDecrypt } from './tools/DecryptPdf.js';
+import { init as initPdf2Png } from './tools/PdfToPng.js';
 
 // Boot
 document.addEventListener('DOMContentLoaded', () => {
@@ -48,4 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initWatermark();
   initEncrypt();
   initExtract();
+  initRotate();
+  initDeletePages();
+  initInspector();
+  initDecrypt();
+  initPdf2Png();
 });
