@@ -26,9 +26,9 @@ Built with vanilla JavaScript, [pdf-lib](https://pdf-lib.js.org/), [PDF.js](http
 
 ### Convert
 
-| PDF to JPG | Images to PDF | HTML to PDF |
-|:---:|:---:|:---:|
-| ![PDF to JPG](public/screenshots/pdf2jpg.png) | ![Images to PDF](public/screenshots/img2pdf.png) | ![HTML to PDF](public/screenshots/html2pdf.png) |
+| PDF to JPG | PDF to PNG | Images to PDF | HTML to PDF |
+|:---:|:---:|:---:|:---:|
+| ![PDF to JPG](public/screenshots/pdf2jpg.png) | ![PDF to PNG](public/screenshots/pdf2png.png) | ![Images to PDF](public/screenshots/img2pdf.png) | ![HTML to PDF](public/screenshots/html2pdf.png) |
 
 ### Edit & Organize
 
@@ -36,9 +36,13 @@ Built with vanilla JavaScript, [pdf-lib](https://pdf-lib.js.org/), [PDF.js](http
 |:---:|:---:|:---:|
 | ![Organize](public/screenshots/organize.png) | ![Add Text](public/screenshots/addtext.png) | ![Page Numbers](public/screenshots/pagenums.png) |
 
-| Add Watermark | Encrypt PDF | Extract Text |
+| Add Watermark | Encrypt PDF | Decrypt PDF |
 |:---:|:---:|:---:|
-| ![Watermark](public/screenshots/watermark.png) | ![Encrypt](public/screenshots/encrypt.png) | ![Extract](public/screenshots/extract.png) |
+| ![Watermark](public/screenshots/watermark.png) | ![Encrypt](public/screenshots/encrypt.png) | ![Decrypt](public/screenshots/decrypt.png) |
+
+| Rotate Pages | Delete Pages | |
+|:---:|:---:|:---:|
+| ![Rotate](public/screenshots/rotate.png) | ![Delete Pages](public/screenshots/deletepages.png) | |
 
 ---
 
@@ -73,12 +77,15 @@ No data is ever sent over the network. There is no backend, no database, and no 
 | **Merge PDFs** | Combine multiple PDF files into one. Drag to reorder before merging. |
 | **Split PDF** | Extract selected pages or split every page into a separate PDF. Visual page picker included. |
 | **Compress PDF** | Reduce file size. Most effective on PDFs with embedded images. |
+| **PDF Inspector** | View metadata, page count, file size, page dimensions, author, creator, dates, and PDF version. |
+| **Extract Text** | Extract all text content from a PDF and copy it to the clipboard. |
 
 ### Convert
 
 | Tool | Description |
 |------|-------------|
 | **PDF to JPG** | Render each PDF page as a JPG image. Choose Standard (72 DPI), High (150 DPI), or Maximum (216 DPI) quality. |
+| **PDF to PNG** | Render each PDF page as a lossless PNG image. Same quality options as PDF to JPG. |
 | **Images to PDF** | Combine JPG, PNG, or WebP images into a single PDF document. |
 | **HTML to PDF** | Paste raw HTML and convert it to a downloadable PDF. |
 
@@ -91,7 +98,9 @@ No data is ever sent over the network. There is no backend, no database, and no 
 | **Page Numbers** | Add page numbers with configurable position (top/bottom, left/center/right), format (plain, dash, "Page N", "N of M"), and starting number. |
 | **Add Watermark** | Stamp a diagonal text watermark on every page. Configurable text and opacity (light 10%, medium 20%, heavy 35%). |
 | **Encrypt PDF** | Password-protect a PDF using pdf-lib's built-in encryption. |
-| **Extract Text** | Extract all text content from a PDF and copy it to the clipboard. |
+| **Decrypt PDF** | Remove password protection from an encrypted PDF. |
+| **Rotate Pages** | Select individual pages and rotate them 90° clockwise, 90° counter-clockwise, or 180°. |
+| **Delete Pages** | Select pages to remove from a PDF, with visual thumbnails. At least one page must remain. |
 
 ---
 
@@ -181,6 +190,7 @@ pdf-kit/
 │   │   ├── SplitPdf.js
 │   │   ├── CompressPdf.js
 │   │   ├── PdfToJpg.js
+│   │   ├── PdfToPng.js
 │   │   ├── ImagesToPdf.js
 │   │   ├── HtmlToPdf.js
 │   │   ├── OrganizePages.js
@@ -188,6 +198,10 @@ pdf-kit/
 │   │   ├── PageNumbers.js
 │   │   ├── AddWatermark.js
 │   │   ├── EncryptPdf.js
+│   │   ├── DecryptPdf.js
+│   │   ├── RotatePages.js
+│   │   ├── DeletePages.js
+│   │   ├── PdfInspector.js
 │   │   └── ExtractText.js
 │   └── main.js               # Entry point — imports and initializes all tools
 ├── tests/
