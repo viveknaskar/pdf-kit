@@ -26,9 +26,9 @@ Built with vanilla JavaScript, [pdf-lib](https://pdf-lib.js.org/), [PDF.js](http
 
 ### Convert
 
-| PDF to JPG | PDF to PNG | Images to PDF | HTML to PDF |
-|:---:|:---:|:---:|:---:|
-| ![PDF to JPG](public/screenshots/pdf2jpg.png) | ![PDF to PNG](public/screenshots/pdf2png.png) | ![Images to PDF](public/screenshots/img2pdf.png) | ![HTML to PDF](public/screenshots/html2pdf.png) |
+| PDF to JPG | Images to PDF | HTML to PDF |
+|:---:|:---:|:---:|
+| ![PDF to JPG](public/screenshots/pdf2jpg.png) | ![Images to PDF](public/screenshots/img2pdf.png) | ![HTML to PDF](public/screenshots/html2pdf.png) |
 
 ### Edit & Organize
 
@@ -36,13 +36,9 @@ Built with vanilla JavaScript, [pdf-lib](https://pdf-lib.js.org/), [PDF.js](http
 |:---:|:---:|:---:|
 | ![Organize](public/screenshots/organize.png) | ![Add Text](public/screenshots/addtext.png) | ![Page Numbers](public/screenshots/pagenums.png) |
 
-| Add Watermark | Encrypt PDF | Decrypt PDF |
-|:---:|:---:|:---:|
-| ![Watermark](public/screenshots/watermark.png) | ![Encrypt](public/screenshots/encrypt.png) | ![Decrypt](public/screenshots/decrypt.png) |
-
-| Rotate Pages | Delete Pages | |
-|:---:|:---:|:---:|
-| ![Rotate](public/screenshots/rotate.png) | ![Delete Pages](public/screenshots/deletepages.png) | |
+| Add Watermark | Encrypt PDF |
+|:---:|:---:|
+| ![Watermark](public/screenshots/watermark.png) | ![Encrypt](public/screenshots/encrypt.png) |
 
 ---
 
