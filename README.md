@@ -4,8 +4,13 @@
 
 ![Views](https://visitor-badge.laobi.icu/badge?page_id=viveknaskar.pdf-kit)
 
-<a href="https://www.producthunt.com/products/pdfkit?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-pdfkit" target="_blank" rel="noopener noreferrer"><img alt="pdfkit - Free, secure PDF tools in your browser. | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1117224&theme=light&t=1775582223057"></a>
 Live site: https://viveknaskar.github.io/pdf-kit/
+
+<div align="center">
+  <a href="https://peerlist.io/viveknaskar/project/pdfkit" target="_blank" rel="noreferrer">
+    <img src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-two-light.svg" alt="pdfkit" height="64">
+  </a>
+</div>
 
 Free, open-source PDF tools that run entirely in your browser. No watermarks, no sign-up, no server uploads, your files never leave your device.
 

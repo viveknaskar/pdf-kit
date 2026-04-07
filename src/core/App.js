@@ -153,6 +153,13 @@ export function renderApp() {
           </div>
         </div>
 
+        <!-- PEERLIST -->
+        <div style="display:flex;justify-content:center;margin-top:32px;">
+          <a href="https://peerlist.io/viveknaskar/project/pdfkit" target="_blank" rel="noreferrer">
+            <img src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-two-light.svg" alt="pdfkit" style="width:auto;height:64px;">
+          </a>
+        </div>
+
       </div>
     </div>
 
@@ -163,7 +170,7 @@ export function renderApp() {
       <div class="footer-inner">
         <span class="footer-copy">© ${new Date().getFullYear()} PDF Kit — free &amp; open source</span>
         <div class="footer-links">
-          <a href="https://www.producthunt.com/products/pdfkit?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-pdfkit" target="_blank" rel="noopener noreferrer"><img alt="pdfkit - Free, secure PDF tools in your browser. | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1117224&theme=light&t=1775582223057"></a>          <a class="footer-link footer-star" href="https://github.com/viveknaskar/pdf-kit" target="_blank" rel="noopener">★ Star on GitHub</a>
+          <a class="footer-link footer-star" href="https://github.com/viveknaskar/pdf-kit" target="_blank" rel="noopener">★ Star on GitHub</a>
           <a class="footer-link footer-sponsor" href="https://github.com/sponsors/viveknaskar" target="_blank" rel="noopener">♥ Sponsor</a>
           <a class="footer-link footer-coffee" href="https://buymeacoffee.com/viveknaskar" target="_blank" rel="noopener">☕ Buy me a coffee</a>
         </div>
