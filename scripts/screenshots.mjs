@@ -20,10 +20,10 @@ const BASE_URL = `http://localhost:${PORT}/pdf-kit/`;
 const VIEWPORT = { width: 1280, height: 800 };
 
 const TOOLS = [
-  'merge', 'split', 'compress',
-  'pdf2jpg', 'img2pdf', 'html2pdf',
+  'merge', 'split', 'compress', 'inspector', 'extract',
+  'pdf2jpg', 'pdf2png', 'img2pdf', 'html2pdf',
   'organize', 'addtext', 'pagenums',
-  'watermark', 'encrypt', 'extract',
+  'watermark', 'encrypt', 'decrypt', 'rotate', 'deletepages',
 ];
 
 mkdirSync(OUT_DIR, { recursive: true });
