@@ -16,7 +16,6 @@ export function renderApp() {
         <button data-section="edit">Edit & Organize</button>
         <button data-section="convert">Convert</button>
         <button data-section="howitworks">How does it Work?</button>
-        <button data-section="support">Sponsor</button>
       </nav>
     </header>
 
@@ -154,16 +153,6 @@ export function renderApp() {
           </div>
         </div>
 
-        <!-- SUPPORT -->
-        <div class="tool-section" id="section-support">
-          <div class="section-label">Sponsor</div>
-          <div class="info-card">
-            <p>pdfkit is free and open-source. If it has been useful to you, consider supporting its development via GitHub Sponsors.</p>
-            <a href="https://github.com/sponsors/viveknaskar" target="_blank" rel="noopener" class="btn-sponsor">
-              ❤️ Sponsor on GitHub
-            </a>
-          </div>
-        </div>
       </div>
     </div>
 
