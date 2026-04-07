@@ -6,11 +6,7 @@
 
 Live site: https://viveknaskar.github.io/pdf-kit/
 
-<div align="center">
-  <a href="https://peerlist.io/viveknaskar/project/pdfkit" target="_blank" rel="noreferrer">
-    <img src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-two-light.svg" alt="pdfkit" height="64">
-  </a>
-</div>
+<a href="https://peerlist.io/viveknaskar/project/pdfkit" target="_blank" rel="noreferrer"><img src="https://dqy38fnwh4fqs.cloudfront.net/website/project-spotlight/project-week-rank-two-light.svg" alt="pdfkit" height="64"></a>
 
 Free, open-source PDF tools that run entirely in your browser. No watermarks, no sign-up, no server uploads, your files never leave your device.
 
